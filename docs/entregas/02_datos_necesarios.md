@@ -1,7 +1,5 @@
 # Entrega 2 - Selección de idea de proyecto y análisis de datos necesarios
 
-> **Nota de versión:** este documento ha sido revisado tras la devolución del profesor, que señaló el riesgo de depender de la API de Idealista (acceso no garantizado a tiempo, sin histórico, y datos de oferta no equivalentes a precio de cierre). Se ha cerrado una ciudad, una fuente principal realmente disponible desde el primer día y una alternativa de descarga inmediata. Los cambios respecto a la versión anterior se indican explícitamente en cada sección.
-
 ## 1. Idea seleccionada
 
 **Predicción de precios de vivienda en Madrid mediante modelos de regresión y análisis geoespacial.**

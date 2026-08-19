@@ -1,7 +1,5 @@
 # Entrega 3 - Diseño del modelo de datos y capa gold del proyecto
 
-> **Nota de versión (v3):** tras el segundo feedback del profesor, se cierra el portal principal en **Fotocasa** (descartando la alternativa abierta Pisos.com/Fotocasa), se redefine la granularidad de la capa gold como *una fila por anuncio activo en la fecha de extracción* (no por inmueble único), se precisa el alcance del modelo como predictor de **precio de oferta** (no de precio de mercado ni de cierre), y se añaden criterios de confianza y trazabilidad para el cruce con Catastro.
-
 ## 1. Resumen de la idea y datos del proyecto
 
 El proyecto aborda la dificultad que tienen compradores y vendedores particulares para evaluar si el precio pedido por una vivienda en Madrid es razonable respecto a anuncios comparables en el mercado. La solución planteada es un modelo de regresión que estima el **precio de oferta** de un anuncio de vivienda en venta en Madrid a partir de sus características físicas y de su entorno urbano, presentado a través de un dashboard interactivo. Es importante aclarar que el modelo no predice el precio final de cierre de la transacción ni el valor real de mercado, sino el precio al que el vendedor publica el inmueble — una distinción que se mantendrá explícita en todos los entregables del proyecto.
