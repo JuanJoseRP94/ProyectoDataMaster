@@ -1,124 +1,61 @@
 # PrecioJusto Madrid
 
-### Predicción de precio de oferta inmobiliario en Madrid
+Estimador de precio de oferta de pisos en Madrid capital, para un comprador que quiere saber si un anuncio está dentro de lo habitual.
 
+Proyecto final del Máster en Data Science — Juan José Romero.
 
+La cifra es el **precio de oferta** (lo que se pide en Fotocasa), no el precio de firma ni una tasación.
 
-Proyecto final del Máster en Data Science — Juan José Romero
+## Qué hace la aplicación
 
+El usuario indica distrito, superficie, habitaciones, baños y, si los conoce, la antigüedad y la calle. La aplicación devuelve:
 
-
----
-
-
-
-## ¿Qué hace este proyecto?
-
-
-
-Aplicación web que estima el precio de oferta habitual de una vivienda en Madrid
-
-a partir de sus características (distrito, superficie, habitaciones, baños),
-
-basándose en anuncios reales extraídos de Fotocasa.
-
-
-
-**Importante:** el modelo predice precio de oferta (lo que pide el vendedor),
-
-no precio de cierre ni valor de tasación oficial.
-
-
-
----
-
-
+- una referencia de precio
+- el rango en el que se mueve la mitad central de los anuncios parecidos de ese distrito
+- si el anuncio concreto está por encima, en rango o por debajo
+- pisos reales comparables, con enlace a Fotocasa
+- la confianza de la zona (alta, media o baja según cuántos anuncios hay)
 
 ## Resultados del modelo
 
-
+Entrenado con anuncios que el modelo no ve en el test (20 %, separado por anuncio).
 
 | Métrica | Valor |
-
 |---|---|
+| Modelo | Gradient Boosting sobre el precio en logaritmo |
+| Error medio en test | 18,5 % (MAE 131.046 €) |
+| R² en test | 0,897 |
+| Baseline: mediana de precio del distrito | MAE 350.850 € |
+| Baseline: €/m² mediano del distrito × superficie | MAE 151.661 € |
+| Mejora frente a ese baseline de €/m² | 13,6 % |
+| Anuncios | 3.823 pisos (sin casas ni chalets), de 4.000 descargados |
+| Fuente | Fotocasa, Madrid capital, septiembre 2026 |
 
-| Modelo | Random Forest |
+La mejora frente al €/m² del distrito es pequeña: varios distritos tienen muy pocos anuncios. Por eso la aplicación enseña los comparables, no solo la cifra del modelo. Lo que más mueve el €/m² es la cercanía al centro, el distrito y la cercanía al metro.
 
-| R² en test | 0.842 |
-
-| MAE en test | 181.431 € |
-
-| Mejora sobre baseline | 56.3% |
-
-| Anuncios en el dataset | 478 |
-
-| Fuente de datos | Fotocasa Madrid (sept. 2026) |
-
-
----
-
-
-
-## Estructura del repositorio
-
-ProyectoDataMaster/
-
-├── data/
-
-│ ├── processed/ # Datos limpios
-
-│ └── gold/ # Dataset final para el modelo
-
-├── src/
-
-│ ├── limpiar\_datos.py # Pipeline de limpieza
-
-│ ├── entrenar\_modelo.py # Entrenamiento del modelo
-
-│ └── app.py # Dashboard Streamlit
-
-└── docs/
-
-└── entregas/ # Documentación del proyecto (entregas 1-5)
-
-
-
-
----
-
-
-
-## Cómo ejecutar la app
-
-
+## Cómo ejecutarlo
 
 ```bash
-
-pip install pandas scikit-learn streamlit plotly
-
-python src/limpiar\_datos.py
-
-python src/entrenar\_modelo.py
-
+pip install -r requirements.txt
+python src/limpiar_datos.py
+python src/entrenar_modelo.py
 streamlit run src/app.py
-
 ```
 
+Si hay un CSV nuevo de Apify en `data/raw/fotocasa_madrid_raw.csv`, la limpieza usa ese archivo. Si no, usa el dataset ya procesado.
 
+## Estructura
 
----
+```
+src/features.py          reglas compartidas, metro y formato
+src/limpiar_datos.py     limpieza, distritos y distancia al metro
+src/entrenar_modelo.py   comparación de modelos y modelo guardado
+src/app.py               aplicación
+data/gold/               dataset de entrenamiento
+data/processed/          estaciones de metro (OpenStreetMap)
+docs/entregas/           documentación del curso
+```
 
+## Tecnología
 
-
-## Tecnología utilizada
-
-
-
-**Python** — pandas, scikit-learn, streamlit, plotly
-
-**Fuente de datos** — Fotocasa (scraping vía Apify)
-
-**Modelo** — Random Forest Regressor
-
-**Alcance geográfico** — Madrid capital (21 distritos)
-
+Python, pandas, scikit-learn, Streamlit y Plotly. Anuncios de Fotocasa vía Apify. Distancias al metro calculadas con OpenStreetMap (Overpass), sin coste. Alcance: Madrid capital, 21 distritos.
