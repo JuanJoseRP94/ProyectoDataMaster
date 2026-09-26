@@ -1,6 +1,6 @@
-\#PrecioJusto Madrid
+# PrecioJusto Madrid
 
-\###Predicción de precio de oferta inmobiliario en Madrid
+### Predicción de precio de oferta inmobiliario en Madrid
 
 
 
@@ -34,7 +34,7 @@ no precio de cierre ni valor de tasación oficial.
 
 
 
-##Resultados del modelo
+## Resultados del modelo
 
 
 
@@ -110,7 +110,7 @@ streamlit run src/app.py
 
 
 
-##Tecnología utilizada
+## Tecnología utilizada
 
 
 
