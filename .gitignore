@@ -1,0 +1,8 @@
+# Datos crudos y modelo entrenado (pesan mucho)
+data/raw/
+data/model/
+
+# Python
+__pycache__/
+*.pyc
+.env
