@@ -1,6 +1,6 @@
-\# PrecioJusto Madrid
+\#PrecioJusto Madrid
 
-\### Predicción de precio de oferta inmobiliario en Madrid
+\###Predicción de precio de oferta inmobiliario en Madrid
 
 
 
@@ -8,11 +8,11 @@ Proyecto final del Máster en Data Science — Juan José Romero
 
 
 
-\---
+---
 
 
 
-\## ¿Qué hace este proyecto?
+## ¿Qué hace este proyecto?
 
 
 
@@ -24,17 +24,17 @@ basándose en anuncios reales extraídos de Fotocasa.
 
 
 
-\*\*Importante:\*\* el modelo predice precio de oferta (lo que pide el vendedor),
+**Importante:** el modelo predice precio de oferta (lo que pide el vendedor),
 
 no precio de cierre ni valor de tasación oficial.
 
 
 
-\---
+---
 
 
 
-\## Resultados del modelo
+##Resultados del modelo
 
 
 
@@ -55,12 +55,11 @@ no precio de cierre ni valor de tasación oficial.
 | Fuente de datos | Fotocasa Madrid (sept. 2026) |
 
 
-
-\---
-
+---
 
 
-\## Estructura del repositorio
+
+## Estructura del repositorio
 
 ProyectoDataMaster/
 
@@ -85,11 +84,11 @@ ProyectoDataMaster/
 
 
 
-\---
+---
 
 
 
-\## Cómo ejecutar la app
+## Cómo ejecutar la app
 
 
 
@@ -107,19 +106,19 @@ streamlit run src/app.py
 
 
 
-\---
+---
 
 
 
-\## Tecnología utilizada
+##Tecnología utilizada
 
 
 
-\- \*\*Python\*\* — pandas, scikit-learn, streamlit, plotly
+**Python** — pandas, scikit-learn, streamlit, plotly
 
-\- \*\*Fuente de datos\*\* — Fotocasa (scraping vía Apify)
+**Fuente de datos** — Fotocasa (scraping vía Apify)
 
-\- \*\*Modelo\*\* — Random Forest Regressor
+**Modelo** — Random Forest Regressor
 
-\- \*\*Alcance geográfico\*\* — Madrid capital (21 distritos)
+**Alcance geográfico** — Madrid capital (21 distritos)
 
